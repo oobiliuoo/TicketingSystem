@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.oobiliuoo.ticketingsystem.R;
 import com.oobiliuoo.ticketingsystem.adapter.ScenicSpotAdapter;
 import com.oobiliuoo.ticketingsystem.data.ScenicSpot;
+import com.oobiliuoo.ticketingsystem.utils.LBUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +91,9 @@ public class HomeFragment extends Fragment {
 
     private void initView() {
 
+
+       // LBUtils.resetOrderInfo();
+
         initScenicSpots();
         ScenicSpotAdapter adapter = new ScenicSpotAdapter(getContext(),R.layout.home_list_layout,scenicSpots);
 
@@ -101,13 +105,17 @@ public class HomeFragment extends Fragment {
     }
 
     private void initScenicSpots() {
-        ScenicSpot spot1 = new ScenicSpot("高椅邻景区","AAAAA","开放时间：07：00～22：00",R.drawable.gaoyiling);
+        ScenicSpot spot1 = new ScenicSpot("高椅邻景区","AAAAA","开放时间：07：00-22：00",R.drawable.gaoyiling);
+        spot1.setPrice("0");
         scenicSpots.add(spot1);
-        ScenicSpot spot2 = new ScenicSpot("玻璃栈道","游玩","开放时间：08：00～17：00",R.drawable.boliqiao);
+        ScenicSpot spot2 = new ScenicSpot("玻璃栈道","游玩","开放时间：08：00-17：00",R.drawable.boliqiao);
+        spot2.setPrice("100");
         scenicSpots.add(spot2);
-        ScenicSpot spot3 = new ScenicSpot("缆车单程","交通","开放时间：08：00～20：00",R.drawable.lanche);
+        ScenicSpot spot3 = new ScenicSpot("缆车单程","交通","开放时间：08：00-20：00",R.drawable.lanche);
+        spot3.setPrice("20");
         scenicSpots.add(spot3);
-        ScenicSpot spot4 = new ScenicSpot("急速滑道","游玩","开放时间：08：00～17：00",R.drawable.huadao);
+        ScenicSpot spot4 = new ScenicSpot("急速滑道","游玩","开放时间：08：00-17：00",R.drawable.huadao);
+        spot4.setPrice("30");
         scenicSpots.add(spot4);
     }
 }

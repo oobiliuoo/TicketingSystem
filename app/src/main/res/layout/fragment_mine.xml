@@ -22,9 +22,9 @@
             android:id="@+id/mine_userIcon"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/mine_ibtn_login"
-            android:scaleType="fitCenter"
             android:background="@color/green1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mine_ibtn_login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,36 +47,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="7">
+        android:layout_weight="7"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/white"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="可使用"
-                android:gravity="center"
-                />
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="已失效"
-                android:gravity="center"
-                />
+            android:background="@color/white">
 
             <TextView
+                android:id="@+id/mine_tv_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="全部"
                 android:gravity="center"
-                />
+                android:text="可使用"
+                android:textColor="@color/front_black" />
+
+            <TextView
+                android:id="@+id/mine_tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="已失效"
+                android:textColor="@color/front_black" />
+
+            <TextView
+                android:id="@+id/mine_tv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="全部"
+                android:textColor="@color/front_black" />
 
         </LinearLayout>
 
@@ -85,8 +89,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:divider="@color/gray"
+            android:divider="@color/white"
             android:dividerHeight="6dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
             android:text="home" />
 
 

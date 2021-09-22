@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_notify.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/home_buy_dialog.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/home_list_layout.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/mine_list_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/notify_list_layout.xml" value="0.35" />
         <entry key="app/src/main/res/xml/litepal.xml" value="0.24947916666666667" />
       </map>

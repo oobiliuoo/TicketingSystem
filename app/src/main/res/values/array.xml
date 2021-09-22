@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="orderTypeArray">
+        <item>成人票</item>
+        <item>学生票</item>
+        <item>福利票</item>
+    </string-array>
+
+
+</resources>

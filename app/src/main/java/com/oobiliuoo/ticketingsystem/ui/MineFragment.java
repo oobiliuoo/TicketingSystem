@@ -16,14 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oobiliuoo.ticketingsystem.R;
+import com.oobiliuoo.ticketingsystem.adapter.NotifyTextAdapter;
+import com.oobiliuoo.ticketingsystem.adapter.OrderInfoAdapter;
+import com.oobiliuoo.ticketingsystem.data.OrderInfo;
 import com.oobiliuoo.ticketingsystem.data.UserInfo;
 import com.oobiliuoo.ticketingsystem.utils.LBUtils;
 
 import org.litepal.LitePal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,9 +50,15 @@ public class MineFragment extends Fragment {
     ImageButton ibtnLogin;
     private TextView tvNickName;
 
+    private String tel;
     private Handler mHandler;
     private String userNickName;
 
+    private TextView tv1,tv2,tv3,tvCurrent;
+
+    private ListView listView;
+    private List<OrderInfo> orderInfos;
+    private boolean showList = false;
 
 
     private boolean isLogin = false;
@@ -102,8 +113,16 @@ public class MineFragment extends Fragment {
     private void initView() {
         ibtnLogin = (ImageButton) getView().findViewById(R.id.mine_userIcon);
         ibtnLogin.setOnClickListener(new MyClickListener());
-
         tvNickName = (TextView) getView().findViewById(R.id.mine_tv_nickName);
+
+        tv1 = (TextView) getView().findViewById(R.id.mine_tv_1);
+        tv1.setOnClickListener(new MyClickListener());
+        tv2 = (TextView) getView().findViewById(R.id.mine_tv_2);
+        tv2.setOnClickListener(new MyClickListener());
+        tv3 = (TextView) getView().findViewById(R.id.mine_tv_3);
+        tv3.setOnClickListener(new MyClickListener());
+        tv1.setTextColor(getResources().getColor(R.color.green1));
+        tvCurrent = tv1;
 
         mHandler = new Handler() {
             @Override
@@ -132,7 +151,7 @@ public class MineFragment extends Fragment {
 
       //  LBUtils.resetUserInfo();
         // 读取当前登录用户
-        String tel = LBUtils.readCurrentUser(getContext());
+        tel = LBUtils.readCurrentUser(getContext());
          //String tel = "";
         // 读取帐号信息
         if (tel != "") {
@@ -142,14 +161,29 @@ public class MineFragment extends Fragment {
             isLogin = false;
             ibtnLogin.setImageDrawable(getResources().getDrawable(R.drawable.mine_ibtn_login));
             tvNickName.setText("请先登录");
+            if(showList){
+                orderInfos.clear();
+                OrderInfoAdapter adapter = new OrderInfoAdapter(getContext(),R.layout.mine_list_layout,orderInfos);
+                listView = getView().findViewById(R.id.mine_lv);
+                listView.deferNotifyDataSetChanged();
+                listView.setAdapter(adapter);
+            }
         }
 
     }
 
     private void changeUI() {
-
-        ibtnLogin.setImageDrawable(getResources().getDrawable(R.drawable.img2));
+        ibtnLogin.setImageDrawable(getResources().getDrawable(R.drawable.ticket));
         tvNickName.setText(userNickName);
+
+        if(showList && isLogin){
+            OrderInfoAdapter adapter = new OrderInfoAdapter(getContext(),R.layout.mine_list_layout,orderInfos);
+            listView = getView().findViewById(R.id.mine_lv);
+            listView.deferNotifyDataSetChanged();
+            listView.setAdapter(adapter);
+        }
+
+
     }
 
     /**
@@ -160,12 +194,43 @@ public class MineFragment extends Fragment {
         // 查询数据库中数据
         List<UserInfo> userList = LitePal.where("tel = ?", tel).find(UserInfo.class);
         // 查询到数据传递给handler进行UI更新
+        if(userList.size()>0){
+            userNickName = userList.get(0).getNickName();
+            readOrderInfo(userList.get(0).getTel(),"可使用");
+            LBUtils.sendMessage(mHandler, 3, "changeUI");
+        }
 
-        userNickName = userList.get(0).getNickName();
-
-        LBUtils.sendMessage(mHandler, 3, "changeUI");
     }
 
+
+    private void readOrderInfo(String tel, String key){
+        if(orderInfos != null){
+            orderInfos.clear();
+        }
+        List<OrderInfo> orderList;
+        if(key!=""){
+            orderList = LitePal.where("tel = ? and orderStatue = ?", tel, key).find(OrderInfo.class);
+        }else {
+            orderList = LitePal.where("tel = ?", tel).find(OrderInfo.class);
+        }
+        if(orderList.size()>0){
+            orderInfos = orderList;
+            showList = true;
+        }else {
+            showList = false;
+        }
+
+    }
+
+    private void clearList(){
+        if(orderInfos != null){
+            orderInfos.clear();
+        }
+        OrderInfoAdapter adapter = new OrderInfoAdapter(getContext(),R.layout.mine_list_layout,orderInfos);
+        listView = getView().findViewById(R.id.mine_lv);
+        listView.deferNotifyDataSetChanged();
+        listView.setAdapter(adapter);
+    }
 
     @Override
     public void onStart() {
@@ -185,10 +250,57 @@ public class MineFragment extends Fragment {
                         startActivityForResult(new Intent(getActivity(),SettingActivity.class),2);
                     }
                     break;
+                case R.id.mine_tv_1:
+                   changeTab(v.getId());
+                   break;
+
+                case R.id.mine_tv_2:
+                    changeTab(v.getId());
+                    break;
+
+                case R.id.mine_tv_3:
+                    changeTab(v.getId());
+                    break;
 
                 default:
                     break;
             }
+        }
+    }
+
+    private void changeTab(int position) {
+
+        clearList();
+        tvCurrent.setTextColor(getResources().getColor(R.color.front_black));
+        switch (position){
+            case R.id.mine_tv_1:
+                if(isLogin){
+                    readOrderInfo(tel,"可使用");
+                    changeUI();
+                }
+            case 0:
+                tv1.setTextColor(getResources().getColor(R.color.green1));
+                tvCurrent = tv1;
+                break;
+            case R.id.mine_tv_2:
+                if(isLogin) {
+                    readOrderInfo(tel, "已失效");
+                    changeUI();
+                }
+            case 1:
+                tv2.setTextColor(getResources().getColor(R.color.green1));
+                tvCurrent = tv2;
+                break;
+            case R.id.mine_tv_3:
+                if(isLogin) {
+                    readOrderInfo(tel, "");
+                    changeUI();
+                }
+            case 2:
+                tv3.setTextColor(getResources().getColor(R.color.green1));
+                tvCurrent = tv3;
+                break;
+
         }
     }
 

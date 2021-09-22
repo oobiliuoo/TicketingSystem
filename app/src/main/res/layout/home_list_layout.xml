@@ -60,8 +60,18 @@
         android:layout_marginTop="4dp"
         android:text="免费"
         android:textColor="@color/teal_700"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/hll_btn_buy"
+        app:layout_constraintBottom_toTopOf="@id/hll_tv_time"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="￥"
+        android:textColor="@color/teal_700"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/hll_tv_money"
         app:layout_constraintBottom_toTopOf="@id/hll_tv_time"
         />
 

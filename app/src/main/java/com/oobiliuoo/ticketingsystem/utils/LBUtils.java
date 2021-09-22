@@ -7,6 +7,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.oobiliuoo.ticketingsystem.data.OrderInfo;
 import com.oobiliuoo.ticketingsystem.data.UserInfo;
 
 import org.litepal.LitePal;
@@ -104,5 +105,7 @@ public class LBUtils {
     public static void resetUserInfo(){
         LitePal.deleteAll(UserInfo.class);
     }
-
+    public static void resetOrderInfo(){
+        LitePal.deleteAll(OrderInfo.class);
+    }
 }

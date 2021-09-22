@@ -19,6 +19,8 @@ public class ScenicSpot extends LitePalSupport {
     private String openTime;
     @Column(nullable = false)
     private int picId;
+    @Column(defaultValue = "0")
+    private String price;
 
     public ScenicSpot() {
     }
@@ -60,5 +62,13 @@ public class ScenicSpot extends LitePalSupport {
 
     public void setPicId(int picId) {
         this.picId = picId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

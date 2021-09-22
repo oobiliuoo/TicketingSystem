@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="360dp"
-    android:layout_height="380dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginBottom="20dp"
     android:elevation="4dp"
@@ -85,7 +85,7 @@
 
 
             <TextView
-                android:id="@+id/hbd_tv_price"
+                android:id="@+id/hbd_tv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -97,7 +97,7 @@
                 app:layout_constraintTop_toBottomOf="@id/hbd_tv_time" />
 
             <TextView
-                android:id="@+id/hbd_tv_money"
+                android:id="@+id/hbd_tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -105,7 +105,7 @@
                 android:text="免费"
                 android:textColor="@color/teal_700"
                 android:textSize="16sp"
-                app:layout_constraintLeft_toRightOf="@id/hbd_tv_price"
+                app:layout_constraintLeft_toRightOf="@id/hbd_tv_money"
                 app:layout_constraintTop_toBottomOf="@id/hbd_tv_time" />
 
 
@@ -123,15 +123,15 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="订单号" />
+                android:text="单号" />
 
             <TextView
+                android:id="@+id/hbd_tv_orderID"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="20210922111306"
-                />
+                android:text="20210922111306" />
         </LinearLayout>
 
         <LinearLayout
@@ -149,10 +149,12 @@
                 android:text="日期" />
 
             <EditText
+                android:id="@+id/hbd_et_workTime"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/white"
+                android:inputType="datetime"
                 android:gravity="center"
                 android:hint="点击输入日期" />
         </LinearLayout>
@@ -171,13 +173,14 @@
                 android:gravity="center"
                 android:text="类型" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:hint="点击输入" />
+
+            <Spinner
+                android:id="@+id/hbd_sp_orderType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/orderTypeArray"
+                android:textAlignment="center" />
+
 
         </LinearLayout>
 
@@ -196,12 +199,14 @@
                 android:text="数量" />
 
             <EditText
+                android:id="@+id/hbd_et_orderNum"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:gravity="center"
-                android:text="1 张" />
+                android:inputType="number"
+                android:text="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -219,6 +224,7 @@
                 android:text="合计" />
 
             <TextView
+                android:id="@+id/hbd_tv_sumPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -232,22 +238,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp">
 
             <Button
+                android:id="@+id/bhd_btn_cancel"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
                 android:background="@drawable/btn_look"
                 android:gravity="center"
                 android:text="取消"
                 android:textColor="@color/green1" />
 
             <Button
+                android:id="@+id/hbd_btn_ok"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_buy"

@@ -24,7 +24,7 @@ public class OrderInfo extends LitePalSupport {
     @Column(nullable = false)
     private String workTime;
     /**票据类型*/
-    @Column(defaultValue = "adult")
+    @Column(defaultValue = "成人票")
     private String orderType;
     /**购票数量*/
     @Column(defaultValue = "1")
@@ -32,6 +32,18 @@ public class OrderInfo extends LitePalSupport {
     /**总价*/
     @Column(nullable = false)
     private Integer sumPrice;
+
+    /**用户ID*/
+    @Column(nullable = false)
+    private String tel;
+    /**订单状态*/
+    @Column(defaultValue = "可使用")
+    private String orderStatue;
+    /**是否可用*/
+    @Column(defaultValue = "1")
+    private int usable;
+    /**景点名称*/
+    private  String ScenicName;
 
     public OrderInfo() {
     }
@@ -90,5 +102,37 @@ public class OrderInfo extends LitePalSupport {
 
     public void setSumPrice(Integer sumPrice) {
         this.sumPrice = sumPrice;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getOrderStatue() {
+        return orderStatue;
+    }
+
+    public void setOrderStatue(String orderStatue) {
+        this.orderStatue = orderStatue;
+    }
+
+    public int getUsable() {
+        return usable;
+    }
+
+    public void setUsable(int usable) {
+        this.usable = usable;
+    }
+
+    public String getScenicName() {
+        return ScenicName;
+    }
+
+    public void setScenicName(String scenicName) {
+        ScenicName = scenicName;
     }
 }
