@@ -1,15 +1,23 @@
 package com.oobiliuoo.ticketingsystem.data;
 
+import org.litepal.annotation.Column;
+import org.litepal.crud.LitePalSupport;
+
 /**
  * @author biliu
  *
  * 景点信息
  *
  */
-public class ScenicSpot {
+public class ScenicSpot extends LitePalSupport {
+
+
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String level;
     private String openTime;
+    @Column(nullable = false)
     private int picId;
 
     public ScenicSpot() {

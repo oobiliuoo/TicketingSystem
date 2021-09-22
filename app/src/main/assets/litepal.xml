@@ -3,10 +3,13 @@
     <!-- 数据库名 -->
     <dbname value="TicketingSystem"/>
     <!-- 版本号 -->
-    <version value="2"/>
+    <version value="3"/>
     <list>
         <!-- 创建表 -->
         <mapping class="com.oobiliuoo.ticketingsystem.data.UserInfo"/>
+        <mapping class="com.oobiliuoo.ticketingsystem.data.ScenicSpot"/>
+        <mapping class="com.oobiliuoo.ticketingsystem.data.NotifyText"/>
+        <mapping class="com.oobiliuoo.ticketingsystem.data.OrderInfo"/>
 
     </list>
 </litepal>

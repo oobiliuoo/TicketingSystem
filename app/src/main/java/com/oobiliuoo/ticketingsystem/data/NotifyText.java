@@ -1,12 +1,18 @@
 package com.oobiliuoo.ticketingsystem.data;
 
+import org.litepal.annotation.Column;
+
 /**
  * @author biliu
  * 通知文本类
  */
 public class NotifyText {
+
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String time;
+    @Column(nullable = false)
     private String text;
 
 
