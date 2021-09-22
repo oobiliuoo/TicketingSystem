@@ -1,6 +1,8 @@
 package com.oobiliuoo.ticketingsystem.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.oobiliuoo.ticketingsystem.R;
 import com.oobiliuoo.ticketingsystem.data.OrderInfo;
+import com.oobiliuoo.ticketingsystem.ui.TicketQRCodeActivity;
 
 import java.util.List;
 
@@ -57,7 +60,17 @@ public class OrderInfoAdapter extends ArrayAdapter<OrderInfo> {
         viewHolder.orderScenicName.setText(orderInfo.getScenicName());
         viewHolder.orderNum.setText(orderInfo.getOrderNumber().toString());
         viewHolder.orderWorkTime.setText(orderInfo.getWorkTime());
-
+        viewHolder.ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TicketQRCodeActivity.class);
+                OrderInfo info = orderInfo;
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("orderInfo",info);
+                intent.putExtras(bundle);
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
 

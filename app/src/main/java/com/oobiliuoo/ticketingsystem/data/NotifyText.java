@@ -2,16 +2,21 @@ package com.oobiliuoo.ticketingsystem.data;
 
 import org.litepal.annotation.Column;
 
+import java.io.Serializable;
+
 /**
  * @author biliu
  * 通知文本类
  */
-public class NotifyText {
+public class NotifyText  implements Serializable {
 
+    /**通知标题*/
     @Column(nullable = false)
     private String title;
+    /**通知时间*/
     @Column(nullable = false)
     private String time;
+    /**通知内容*/
     @Column(nullable = false)
     private String text;
 

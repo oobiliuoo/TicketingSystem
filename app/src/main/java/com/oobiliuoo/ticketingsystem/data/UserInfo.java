@@ -9,10 +9,13 @@ import org.litepal.crud.LitePalSupport;
  */
 public class UserInfo extends LitePalSupport {
 
+    /**帐号*/
     @Column(nullable = false)
     private String tel;
+    /**昵称*/
     @Column(defaultValue = "unKnow")
     private String nickName;
+    /**密码*/
     @Column(nullable = false)
     private String pwd;
 

@@ -3,11 +3,13 @@ package com.oobiliuoo.ticketingsystem.data;
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
+import java.io.Serializable;
+
 /**
  * @author biliu
  * 订单表
  */
-public class OrderInfo extends LitePalSupport {
+public class OrderInfo extends LitePalSupport implements Serializable {
 
     /**景点信息*/
     @Column(nullable = false)

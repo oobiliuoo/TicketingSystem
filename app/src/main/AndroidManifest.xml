@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicketingSystem">
         <activity
+            android:name=".ui.NotifyTextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.TicketQRCodeActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.SettingActivity"
             android:exported="true" />
         <activity

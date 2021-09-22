@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_left_24.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/drawable/ic_baseline_bubble_chart_login.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_login.xml" value="0.26510416666666664" />
+        <entry key="app/src/main/res/drawable/ic_baseline_qr_code_24.xml" value="0.2671875" />
         <entry key="app/src/main/res/drawable/ic_baseline_text_fields_24.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/drawable/tab_home.xml" value="0.2671875" />
@@ -19,14 +20,17 @@
         <entry key="app/src/main/res/drawable/underline.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23385416666666667" />
+        <entry key="app/src/main/res/layout/activity_notify_text.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/activity_ticket_qrcode.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/bottom_layout.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_mine.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_notify.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/home_buy_dialog.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/home_list_layout.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/home_look_dialog.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/mine_list_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/notify_list_layout.xml" value="0.35" />
         <entry key="app/src/main/res/xml/litepal.xml" value="0.24947916666666667" />

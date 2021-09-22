@@ -122,6 +122,9 @@ public class MineFragment extends Fragment {
         tv3 = (TextView) getView().findViewById(R.id.mine_tv_3);
         tv3.setOnClickListener(new MyClickListener());
         tv1.setTextColor(getResources().getColor(R.color.green1));
+        tv2.setTextColor(getResources().getColor(R.color.front_black));
+        tv3.setTextColor(getResources().getColor(R.color.front_black));
+
         tvCurrent = tv1;
 
         mHandler = new Handler() {
@@ -225,11 +228,12 @@ public class MineFragment extends Fragment {
     private void clearList(){
         if(orderInfos != null){
             orderInfos.clear();
+            OrderInfoAdapter adapter = new OrderInfoAdapter(getContext(),R.layout.mine_list_layout,orderInfos);
+            listView = getView().findViewById(R.id.mine_lv);
+            listView.deferNotifyDataSetChanged();
+            listView.setAdapter(adapter);
         }
-        OrderInfoAdapter adapter = new OrderInfoAdapter(getContext(),R.layout.mine_list_layout,orderInfos);
-        listView = getView().findViewById(R.id.mine_lv);
-        listView.deferNotifyDataSetChanged();
-        listView.setAdapter(adapter);
+
     }
 
     @Override

@@ -107,15 +107,19 @@ public class HomeFragment extends Fragment {
     private void initScenicSpots() {
         ScenicSpot spot1 = new ScenicSpot("高椅邻景区","AAAAA","开放时间：07：00-22：00",R.drawable.gaoyiling);
         spot1.setPrice("0");
+        spot1.setIntro("  高椅岭风景区位于湖南省郴州市苏仙区桥口镇与资兴市交界处，它与飞天山相隔，与永兴县便江接壤，距离著名的风景名胜区东江湖28公里。这里地势以山林为主，风景宜人，森林覆盖率达95%。高椅岭山、水、泉、洞、寨、崖、坦俱全，是一块尚未开发的丹霞地貌处女地，其最大的特点就是丹霞地貌周边有漂亮的水洼点缀，红岩绿水、险寨奇涧，生态自然，美得一塌糊涂。");
         scenicSpots.add(spot1);
         ScenicSpot spot2 = new ScenicSpot("玻璃栈道","游玩","开放时间：08：00-17：00",R.drawable.boliqiao);
         spot2.setPrice("100");
+        spot2.setIntro("  高椅岭玻璃栈道长60米，最高处海拔1430米，这条看着就让人腿软的玻璃栈道给人带来的刺激震撼，可与举世闻名的美国大峡谷玻璃走廊“天空之路”媲美。");
         scenicSpots.add(spot2);
         ScenicSpot spot3 = new ScenicSpot("缆车单程","交通","开放时间：08：00-20：00",R.drawable.lanche);
         spot3.setPrice("20");
+        spot3.setIntro(" 缆车是由驱动机带动钢丝绳，牵引车厢沿着铺设在地表并有一定坡度的轨道上运行，用以提升或下放人员和货物的运输机械。它多用作工矿区、城市或风景游览区的交通工具。 其利用钢绳牵引，实现人员或货物输送目的之设备的统称或一般称谓。");
         scenicSpots.add(spot3);
         ScenicSpot spot4 = new ScenicSpot("急速滑道","游玩","开放时间：08：00-17：00",R.drawable.huadao);
         spot4.setPrice("30");
+        spot4.setIntro("  你的速度你作主，体会不一样的感觉！");
         scenicSpots.add(spot4);
     }
 }

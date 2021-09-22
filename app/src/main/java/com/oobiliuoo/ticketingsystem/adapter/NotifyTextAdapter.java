@@ -1,10 +1,14 @@
 package com.oobiliuoo.ticketingsystem.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.oobiliuoo.ticketingsystem.R;
 import com.oobiliuoo.ticketingsystem.data.NotifyText;
+import com.oobiliuoo.ticketingsystem.ui.NotifyTextActivity;
 
 import java.util.List;
 
@@ -38,6 +43,7 @@ public class NotifyTextAdapter extends ArrayAdapter<NotifyText> {
             viewHolder = new ViewHolder();
             viewHolder.title = (TextView) view.findViewById(R.id.nll_title);
             viewHolder.time = (TextView) view.findViewById(R.id.nll_time);
+            viewHolder.ll = (LinearLayout) view.findViewById(R.id.nll_ll_notify);
             view.setTag(viewHolder);
 
         }else {
@@ -47,6 +53,16 @@ public class NotifyTextAdapter extends ArrayAdapter<NotifyText> {
 
         viewHolder.title.setText(notifyText.getTitle());
         viewHolder.time.setText(notifyText.getTime());
+        viewHolder.ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NotifyTextActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("notify",notifyText);
+                intent.putExtras(bundle);
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -57,6 +73,7 @@ public class NotifyTextAdapter extends ArrayAdapter<NotifyText> {
         TextView title;
         TextView time;
         TextView text;
+        LinearLayout ll;
 
     }
 

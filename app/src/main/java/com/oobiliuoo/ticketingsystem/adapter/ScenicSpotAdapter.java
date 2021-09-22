@@ -2,9 +2,7 @@ package com.oobiliuoo.ticketingsystem.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -61,7 +59,9 @@ public class ScenicSpotAdapter extends ArrayAdapter<ScenicSpot> {
             viewHolder.btnBuy = (Button) view.findViewById(R.id.hll_btn_buy);
             viewHolder.btnLook = (Button) view.findViewById(R.id.hll_btn_look);
 
-            viewHolder.dialog = new Dialog(getContext(), R.style.NormalDialogStyle);
+            viewHolder.dialogBuy = new Dialog(getContext(), R.style.NormalDialogStyle);
+            viewHolder.dialogLook = new Dialog(getContext(), R.style.NormalDialogStyle);
+
             viewHolder.scenicSpot = scenicSpot;
 
 
@@ -87,9 +87,37 @@ public class ScenicSpotAdapter extends ArrayAdapter<ScenicSpot> {
                 View view1 = View.inflate(getContext(), R.layout.home_buy_dialog, null);
                 // 初始化对话框数据
                 initDialog(viewHolder,view1);
-                showBuyDialog(viewHolder.dialog, view1);
+                showBuyDialog(viewHolder.dialogBuy, view1);
             }
         });
+
+        viewHolder.btnLook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view1 = View.inflate(getContext(), R.layout.home_look_dialog, null);
+                // 初始化对话框数据
+
+                ImageView lookIv1;
+                TextView lookTv1;
+                Button btnBack;
+
+                lookIv1 = (ImageView) view1.findViewById(R.id.hld_iv);
+                lookTv1 = (TextView) view1.findViewById(R.id.hld_tv);
+                btnBack = (Button) view1.findViewById(R.id.hld_btn);
+
+                lookIv1.setImageResource(scenicSpot.getPicId());
+                lookTv1.setText(scenicSpot.getIntro());
+                btnBack.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewHolder.dialogLook.dismiss();
+                    }
+                });
+
+                showBuyDialog(viewHolder.dialogLook, view1);
+            }
+        });
+
 
 
         return view;
@@ -198,7 +226,7 @@ public class ScenicSpotAdapter extends ArrayAdapter<ScenicSpot> {
                     orderInfo.save();
 
                     LBUtils.showToast(getContext(),"购买成功");
-                    viewHolder.dialog.dismiss();
+                    viewHolder.dialogBuy.dismiss();
                 }else {
                     LBUtils.showToast(getContext(),"请先登录");
                 }
@@ -211,7 +239,7 @@ public class ScenicSpotAdapter extends ArrayAdapter<ScenicSpot> {
             @Override
             public void onClick(View v) {
                 LBUtils.showToast(getContext(),"取消购票");
-                viewHolder.dialog.dismiss();
+                viewHolder.dialogBuy.dismiss();
             }
         });
 
@@ -226,7 +254,8 @@ public class ScenicSpotAdapter extends ArrayAdapter<ScenicSpot> {
         TextView price;
         Button btnBuy;
         Button btnLook;
-        Dialog dialog;
+        Dialog dialogBuy;
+        Dialog dialogLook;
         ScenicSpot scenicSpot;
 
     }
