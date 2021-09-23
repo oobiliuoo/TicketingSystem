@@ -29,6 +29,7 @@ public class TicketQRCodeActivity extends AppCompatActivity {
     private TextView tvUserName;
     private TextView tvTel;
     private TextView tvNumber;
+    private TextView tvType;
     private TextView tvStatue;
     private TextView tvSumPrice;
     private Button btnQuitTicket;
@@ -53,6 +54,7 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         tvUserName = (TextView) findViewById(R.id.qrcode_tv_userName);
         tvTel = (TextView) findViewById(R.id.qrcode_tv_tel);
         tvNumber = (TextView) findViewById(R.id.qrcode_tv_num);
+        tvType = (TextView) findViewById(R.id.qrcode_tv_type);
         tvStatue = (TextView) findViewById(R.id.qrcode_tv_statue);
         tvSumPrice = (TextView) findViewById(R.id.qrcode_tv_sumPrice);
         btnQuitTicket = (Button) findViewById(R.id.qrcode_btn_quitTicket);
@@ -68,6 +70,7 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         tvTel.setText(Tel);
 
         tvNumber.setText(orderInfo.getOrderNumber().toString());
+        tvType.setText(orderInfo.getOrderType());
 
         String statue = orderInfo.getOrderStatue();
         tvStatue.setText(statue);
@@ -99,7 +102,7 @@ public class TicketQRCodeActivity extends AppCompatActivity {
         });
 
         String text = "单号：" + orderID +" 人数: "+ orderInfo.getOrderNumber() + " 状态："+ statue;
-        Bitmap bitmap = LBUtils.createQRCodeBitmap(text,128,128,"UTF-8","H","1", Color.BLACK,Color.WHITE);
+        Bitmap bitmap = LBUtils.createQRCodeBitmap(text,160,160,"UTF-8","H","1", Color.BLACK,Color.WHITE);
         ivQRCode.setImageBitmap(bitmap);
 
     }

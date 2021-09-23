@@ -319,7 +319,7 @@ public class MineFragment extends Fragment {
             case 1:
                 if (resultCode == RESULT_OK) {
                     String returnedData = data.getStringExtra("login_return");
-                    LBUtils.showToast(getContext(), returnedData);
+                   // LBUtils.showToast(getContext(), returnedData);
                     isLogin=true;
                     readDate(returnedData);
                 }

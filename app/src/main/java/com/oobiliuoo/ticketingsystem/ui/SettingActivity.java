@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -34,6 +35,11 @@ public class SettingActivity extends AppCompatActivity {
     private Button btnQuit;
     private Button btnOUt;
     private UserInfo userInfo;
+    private LinearLayout llMessage;
+    private LinearLayout llSafe;
+    private LinearLayout llUpdate;
+    private LinearLayout llFk;
+    private LinearLayout llAbout;
 
     private Handler mHandler;
 
@@ -58,7 +64,7 @@ public class SettingActivity extends AppCompatActivity {
                         // 接收成功
                         changeUI();
                         break;
-                    case  4:
+                    case 4:
                         break;
                     default:
                         break;
@@ -113,15 +119,29 @@ public class SettingActivity extends AppCompatActivity {
 
         btnOUt = (Button) findViewById(R.id.set_btn_out);
         btnOUt.setOnClickListener(new MyClickListener());
+
+        llMessage = (LinearLayout) findViewById(R.id.set_ll_message);
+        llSafe = (LinearLayout) findViewById(R.id.set_ll_safe);
+        llUpdate = (LinearLayout) findViewById(R.id.set_ll_update);
+        llFk = (LinearLayout) findViewById(R.id.set_ll_fk);
+        llAbout = (LinearLayout) findViewById(R.id.set_ll_about);
+
+
+        llMessage.setOnClickListener(new MyClickListener());
+        llSafe.setOnClickListener(new MyClickListener());
+        llUpdate.setOnClickListener(new MyClickListener());
+        llFk.setOnClickListener(new MyClickListener());
+        llAbout.setOnClickListener(new MyClickListener());
+
     }
 
 
     /**
-     *  修改本地账户
-     * */
+     * 修改本地账户
+     */
     private void changeCurrentUser(String tel) {
-        SharedPreferences.Editor editor = SettingActivity.this.getSharedPreferences("data",MODE_PRIVATE).edit();
-        editor.putString("tel",tel);
+        SharedPreferences.Editor editor = SettingActivity.this.getSharedPreferences("data", MODE_PRIVATE).edit();
+        editor.putString("tel", tel);
         editor.apply();
 
     }
@@ -130,7 +150,7 @@ public class SettingActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.set_btn_quit:
                     LBUtils.showToast(SettingActivity.this, "退出登录");
                     // 修改本地账户为"“
@@ -142,9 +162,24 @@ public class SettingActivity extends AppCompatActivity {
                 case R.id.set_btn_out:
                     // 将帐号传回 MineFragment
                     Intent intent = new Intent();
-                    intent.putExtra("register_return","out");
-                    setResult(RESULT_OK,intent);
+                    intent.putExtra("register_return", "out");
+                    setResult(RESULT_OK, intent);
                     finish();
+                    break;
+                case R.id.set_ll_message:
+                    LBUtils.showToast(SettingActivity.this, "暂未开放");
+                    break;
+                case R.id.set_ll_safe:
+                    LBUtils.showToast(SettingActivity.this, "暂未开放");
+                    break;
+                case R.id.set_ll_update:
+                    LBUtils.showToast(SettingActivity.this, "暂无更新");
+                    break;
+                case R.id.set_ll_fk:
+                    LBUtils.showToast(SettingActivity.this, "暂未开放");
+                    break;
+                case R.id.set_ll_about:
+                    LBUtils.showLongToast(SettingActivity.this, "设计by Mr.biliu \n来自智慧旅游实训小组\n (刘博、彭渤、周淼柯、徐明明）");
                     break;
                 default:
                     break;

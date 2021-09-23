@@ -75,6 +75,14 @@ public class LBUtils {
 
         Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
     }
+    /**
+     *  显示Toast
+     * */
+    public static void showLongToast(Context context, String text){
+
+        Toast.makeText(context,text,Toast.LENGTH_LONG).show();
+    }
+
 
     /**
      *  通过Handler传递消息

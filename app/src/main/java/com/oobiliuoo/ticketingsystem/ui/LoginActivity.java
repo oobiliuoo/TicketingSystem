@@ -11,6 +11,8 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.oobiliuoo.ticketingsystem.R;
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvRegister;
     private Handler mHandler;
     private String[] userInfo;
+    private ImageView ibtnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +139,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                //  LBUtils.showToast(LoginActivity.this, "注册");
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+
+
+        ibtnBack = (ImageButton) findViewById(R.id.login_ibtn_back);
+        ibtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

@@ -10,6 +10,8 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.oobiliuoo.ticketingsystem.R;
 import com.oobiliuoo.ticketingsystem.data.UserInfo;
@@ -34,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etPwd;
     private EditText etPwd2;
+    private ImageView ibtnBack;
 
     /** 保存用户输入*/
     private String[] userInfo;
@@ -129,6 +132,15 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+
+        ibtnBack = (ImageButton) findViewById(R.id.register_ibtn_back);
+        ibtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     /**
